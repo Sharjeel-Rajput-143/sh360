@@ -1,0 +1,290 @@
+{
+  "rev": 0,
+  "categories": [
+    {
+      "id": "electrical",
+      "label": "Electrical Solutions",
+      "name": "Electrical",
+      "icon": "electrical"
+    },
+    {
+      "id": "plumbing",
+      "label": "Plumbing Services",
+      "name": "Plumbing",
+      "icon": "plumbing"
+    },
+    {
+      "id": "cleaning",
+      "label": "Home Cleaning",
+      "name": "Cleaning",
+      "icon": "cleaning"
+    },
+    {
+      "id": "ev-charger",
+      "label": "EV Charger Installation",
+      "name": "EV Charger",
+      "icon": "ev-charger"
+    },
+    {
+      "id": "maintenance",
+      "label": "Home Maintenance",
+      "name": "Maintenance",
+      "icon": "maintenance"
+    }
+  ],
+  "products": [
+    {
+      "id": "ELEC-101",
+      "category": "electrical",
+      "title": "Full House Electrical Wiring",
+      "description": "Complete rewiring for homes and apartments, done to safety code with quality cables and fittings.",
+      "specs": [
+        "Certified electricians",
+        "Copper wiring",
+        "Safety inspection included"
+      ],
+      "image": "https://images.unsplash.com/photo-1682345262055-8f95f3c513ea?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+      "id": "ELEC-102",
+      "category": "electrical",
+      "title": "Distribution Board & Breaker Installation",
+      "description": "Supply and installation of distribution boards, circuit breakers and MCBs to protect your home from overload and short circuits.",
+      "specs": [
+        "MCB & ELCB protection",
+        "Load calculation",
+        "Labeled circuits"
+      ],
+      "image": "https://images.unsplash.com/photo-1758101755915-462eddc23f57?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+      "id": "ELEC-103",
+      "category": "electrical",
+      "title": "Light Fixture & Fan Installation",
+      "description": "Installation and replacement of ceiling fans, chandeliers, LED fixtures and switches, indoors and outdoors.",
+      "specs": [
+        "Indoor & outdoor fixtures",
+        "Dimmer & switch wiring",
+        "Same day service"
+      ],
+      "image": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+      "id": "ELEC-104",
+      "category": "electrical",
+      "title": "Electrical Fault Finding & Repair",
+      "description": "Diagnosis and repair of tripping breakers, short circuits, sparking outlets and other electrical faults.",
+      "specs": [
+        "Fast diagnosis",
+        "Tested after repair",
+        "Emergency callouts"
+      ],
+      "image": "https://images.unsplash.com/photo-1759542877886-39d81e8f2eee?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+      "id": "ELEC-105",
+      "category": "electrical",
+      "title": "Smart Home Wiring & Automation",
+      "description": "Wiring and setup for smart switches, smart lighting and home automation panels.",
+      "specs": [
+        "Smart switch wiring",
+        "App controlled lighting",
+        "Compatible with major smart home systems"
+      ],
+      "image": "https://images.unsplash.com/photo-1660330589693-99889d60181e?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+      "id": "ELEC-106",
+      "category": "electrical",
+      "title": "Industrial & Commercial Electrical Installation",
+      "description": "Electrical installation and maintenance for shops, offices and small industrial units.",
+      "specs": [
+        "Three-phase wiring",
+        "Panel upgrades",
+        "Scheduled maintenance plans"
+      ],
+      "image": "https://images.unsplash.com/photo-1555963966-b7ae5404b6ed?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+      "id": "PLMB-101",
+      "category": "plumbing",
+      "title": "Pipe Leak Detection & Repair",
+      "description": "Finding and fixing leaking pipes, joints and fittings before they damage your walls and floors.",
+      "specs": [
+        "Leak detection",
+        "Pipe replacement",
+        "Same day repair"
+      ],
+      "image": "https://images.unsplash.com/photo-1676210134188-4c05dd172f89?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+      "id": "PLMB-102",
+      "category": "plumbing",
+      "title": "Bathroom & Kitchen Plumbing Installation",
+      "description": "Complete plumbing installation for new bathrooms and kitchens, from piping to fittings.",
+      "specs": [
+        "New construction & renovation",
+        "Fixture installation",
+        "Pressure testing"
+      ],
+      "image": "https://images.unsplash.com/photo-1768321913920-d3ac011e0683?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+      "id": "PLMB-103",
+      "category": "plumbing",
+      "title": "Water Heater Installation & Repair",
+      "description": "Installation, servicing and repair of electric and gas water heaters.",
+      "specs": [
+        "All major brands",
+        "Safety valve check",
+        "Repair & replacement"
+      ],
+      "image": "https://images.unsplash.com/photo-1749532125405-70950966b0e5?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+      "id": "PLMB-104",
+      "category": "plumbing",
+      "title": "Drain Cleaning & Unclogging",
+      "description": "Clearing blocked drains, sinks and sewer lines using proper tools, not guesswork.",
+      "specs": [
+        "Kitchen & bathroom drains",
+        "Sewer line clearing",
+        "No hidden charges"
+      ],
+      "image": "https://images.unsplash.com/photo-1768321918210-a775e4c88f08?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+      "id": "CLN-101",
+      "category": "cleaning",
+      "title": "Deep House Cleaning",
+      "description": "Top to bottom deep clean covering kitchens, bathrooms, floors and hard to reach corners.",
+      "specs": [
+        "Full home coverage",
+        "Sanitized equipment",
+        "One time or recurring"
+      ],
+      "image": "https://images.unsplash.com/photo-1740657254989-42fe9c3b8cce?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+      "id": "CLN-102",
+      "category": "cleaning",
+      "title": "Regular Home Cleaning",
+      "description": "Scheduled weekly or monthly cleaning to keep your home consistently spotless.",
+      "specs": [
+        "Weekly / bi-weekly / monthly",
+        "Trained staff",
+        "Flexible timing"
+      ],
+      "image": "https://images.unsplash.com/photo-1774578341952-98cbacf88010?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+      "id": "CLN-103",
+      "category": "cleaning",
+      "title": "Post Construction Cleaning",
+      "description": "Dust and debris removal after renovation or construction work, so your space is move in ready.",
+      "specs": [
+        "Dust & debris removal",
+        "Floor & window cleaning",
+        "Final touch polish"
+      ],
+      "image": "https://images.unsplash.com/photo-1580256081112-e49377338b7f?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+      "id": "CLN-104",
+      "category": "cleaning",
+      "title": "Carpet & Upholstery Cleaning",
+      "description": "Deep cleaning for carpets, sofas and curtains to remove stains, dust and odors.",
+      "specs": [
+        "Stain removal",
+        "Odor treatment",
+        "Fast drying"
+      ],
+      "image": "https://images.unsplash.com/photo-1713110824336-f78c320dcf8e?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+      "id": "EVC-101",
+      "category": "ev-charger",
+      "title": "Home EV Charger Installation",
+      "description": "Supply and installation of a home EV charging point, wired safely to your main board.",
+      "specs": [
+        "Wall mounted charger",
+        "Dedicated circuit",
+        "Safety certified install"
+      ],
+      "image": "https://images.unsplash.com/photo-1593941707874-ef25b8b4a92b?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+      "id": "EVC-102",
+      "category": "ev-charger",
+      "title": "EV Charging Point Wiring Upgrade",
+      "description": "Upgrading your home's electrical capacity and wiring to safely support EV charging.",
+      "specs": [
+        "Load assessment",
+        "Panel upgrade if needed",
+        "Compliant wiring"
+      ],
+      "image": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+      "id": "EVC-103",
+      "category": "ev-charger",
+      "title": "EV Charger Maintenance & Troubleshooting",
+      "description": "Servicing and fault finding for home EV chargers that are slow, tripping or not charging.",
+      "specs": [
+        "Fault diagnosis",
+        "Firmware & connection checks",
+        "Preventive servicing"
+      ],
+      "image": "https://images.unsplash.com/photo-1704475336842-0ab3798abf0e?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+      "id": "MNT-101",
+      "category": "maintenance",
+      "title": "General Home Maintenance Package",
+      "description": "A single call for the small jobs around the house, from loose fittings to switch and socket repairs.",
+      "specs": [
+        "Multi-trade technician",
+        "Flexible scheduling",
+        "Transparent pricing"
+      ],
+      "image": "https://images.unsplash.com/photo-1676311396794-f14881e9daaa?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+      "id": "MNT-102",
+      "category": "maintenance",
+      "title": "Appliance Installation & Repair",
+      "description": "Installation and repair of home appliances including water pumps, exhaust fans and geysers.",
+      "specs": [
+        "Pumps, fans, geysers",
+        "Genuine parts where needed",
+        "Warranty on labor"
+      ],
+      "image": "https://images.unsplash.com/photo-1786204697642-328c597b6f05?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+      "id": "MNT-103",
+      "category": "maintenance",
+      "title": "Annual Maintenance Contract (AMC)",
+      "description": "A yearly plan covering electrical, plumbing and general maintenance checkups for your home.",
+      "specs": [
+        "Scheduled visits",
+        "Priority callouts",
+        "Covers electrical & plumbing"
+      ],
+      "image": "https://images.unsplash.com/photo-1505798577917-a65157d3320a?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+      "id": "MNT-104",
+      "category": "maintenance",
+      "title": "Minor Wall & Painting Touch Ups",
+      "description": "Small wall repairs and paint touch ups after maintenance or electrical work.",
+      "specs": [
+        "Crack & hole repair",
+        "Color matched paint",
+        "Clean finish"
+      ],
+      "image": "https://images.unsplash.com/photo-1786295866816-89841e942221?auto=format&fit=crop&w=1600&q=80"
+    }
+  ],
+  "videos": []
+}
