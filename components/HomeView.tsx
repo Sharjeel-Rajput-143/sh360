@@ -1,7 +1,7 @@
 import CategoryTiles from "@/components/CategoryTiles";
 import BottomNav from "@/components/BottomNav";
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
+import RevampHeader from "@/components/RevampHeader";
+import RevampHero from "@/components/RevampHero";
 import ProductsSection from "@/components/ProductsSection";
 import ShopProvider from "@/components/ShopProvider";
 import VideoGallery from "@/components/VideoGallery";
@@ -15,16 +15,14 @@ import {
 } from "@/components/Sections";
 import type { Catalog } from "@/lib/products";
 
-/** The whole landing page. Rendered ahead of time (one static page per category tab). */
+/** Landing page: new engineering-led identity with the existing service catalog and lead flow. */
 export default function HomeView({ catalog, initialCategory }: { catalog: Catalog; initialCategory: string }) {
   return (
     <ShopProvider catalog={catalog} initialCategory={initialCategory}>
-      <a className="skip-link" href="#products">
-        Skip to services
-      </a>
-      <Header />
+      <a className="skip-link" href="#products">Skip to services</a>
+      <RevampHeader />
       <main>
-        <Hero />
+        <RevampHero />
         <TrustStrip />
         <CategoryTiles />
         <ProductsSection />
