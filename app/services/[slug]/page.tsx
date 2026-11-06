@@ -50,11 +50,35 @@ export default async function ServicePage({
                   Discuss {s.short.toLowerCase()} <span>↗</span>
                 </Link>
               </div>
-              <Scene
-                name={s.image}
-                priority
-                alt={`Conceptual ${s.title.toLowerCase()} architectural study`}
-              />
+              {s.slug === "property-maintenance" ? (
+                <div className="ix-maintenance-brief">
+                  <p className="ix-eyebrow">A COORDINATED WORK PLAN</p>
+                  <ol>
+                    <li>
+                      <span>01</span>Room-by-room defect list
+                    </li>
+                    <li>
+                      <span>02</span>Access and priority review
+                    </li>
+                    <li>
+                      <span>03</span>Tasks and materials agreed
+                    </li>
+                    <li>
+                      <span>04</span>Work, review and handover
+                    </li>
+                  </ol>
+                  <p>
+                    Verified SH360 maintenance photography is pending. No
+                    illustrative work is presented as a completed project.
+                  </p>
+                </div>
+              ) : (
+                <Scene
+                  name={s.image}
+                  priority
+                  alt={`Conceptual ${s.title.toLowerCase()} architectural study`}
+                />
+              )}
             </div>
           </div>
         </section>

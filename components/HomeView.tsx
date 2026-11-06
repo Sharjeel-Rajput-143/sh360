@@ -1,13 +1,13 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Catalog } from "@/lib/products";
-import { services } from "@/lib/services";
+import { services, processSteps } from "@/lib/services";
 import PublicShell from "./PublicShell";
-import { Scene, Capability, Process, FAQ } from "./Editorial";
+import SystemsExplorer from "./SystemsExplorer";
+import { FAQ } from "./Editorial";
 import InquiryForm from "./InquiryForm";
-import ProductsSection from "./ProductsSection";
-import VideoGallery from "./VideoGallery";
-import Reveal from "./Reveal";
 import Evidence from "./Evidence";
+
 export default function HomeView({
   catalog,
   initialCategory,
@@ -17,376 +17,318 @@ export default function HomeView({
 }) {
   return (
     <PublicShell catalog={catalog} initialCategory={initialCategory}>
-      <main id="main">
-        <section className="px-hero" id="top">
-          <div className="px-wrap">
-            <div className="px-hero-meta">
-              <p className="px-label">
-                ELECTRICAL ENGINEERING / IoT / TECHNICAL SERVICES
+      <main id="main" className="ix-home">
+        <section className="ix-hero" id="top" aria-labelledby="ix-title">
+          <Image
+            className="ix-hero-image"
+            src="/visuals/switchgear.webp"
+            alt="Original professional render of an organized electrical distribution cabinet with circuit protection and contained wiring"
+            width={1920}
+            height={1200}
+            sizes="100vw"
+            priority
+            unoptimized
+          />
+          <div className="ix-hero-shade" aria-hidden="true" />
+          <div className="px-wrap ix-hero-inner">
+            <p className="ix-kicker">
+              <span /> SH360 / ENGINEERING & INTEGRATED SERVICES
+            </p>
+            <div className="ix-hero-copy">
+              <p className="ix-eyebrow">
+                POWER INFRASTRUCTURE MEETS INTELLIGENT SPACES
               </p>
-              <span>CONNECTED THINKING. PRACTICAL SOLUTIONS.</span>
-            </div>
-            <div className="px-hero-grid">
-              <div className="px-hero-copy">
-                <h1>
-                  Engineering
+              <h1 id="ix-title">
+                Powering Spaces.
+                <br />
+                <em>
+                  Connecting
                   <br />
-                  <span>Smarter</span>
-                  <br />
-                  Spaces<span className="px-period">.</span>
-                </h1>
-                <p>
-                  From electrical infrastructure and intelligent automation to
-                  the services that keep properties running. Technical
-                  expertise, brought together under one roof.
-                </p>
-                <div className="px-actions">
-                  <Link className="px-button" href="#solutions">
-                    Explore Our Solutions <span>↗</span>
-                  </Link>
-                  <Link className="px-text-link" href="#contact">
-                    Request a Service ↗
-                  </Link>
-                </div>
-              </div>
-              <div className="px-hero-art">
-                <div className="px-art-index">
-                  <span>THE INTEGRATED PROPERTY</span>
-                  <span>FIG. 01</span>
-                </div>
-                <Scene
-                  priority
-                  alt="Original conceptual architectural cutaway showing a modern property with electrical systems, connected devices and EV charging"
-                />
-                <div className="px-art-tags">
-                  <span>
-                    <i /> Electrical systems
-                  </span>
-                  <span>
-                    <i /> Smart connectivity
-                  </span>
-                  <span>
-                    <i /> EV infrastructure
-                  </span>
-                </div>
+                  Systems.
+                </em>
+              </h1>
+              <p>
+                Electrical engineering, smart automation, EV charging and
+                property services — designed around the way your space works.
+              </p>
+              <div className="ix-actions">
+                <Link className="ix-button" href="#solutions">
+                  Explore Our Expertise <span>↗</span>
+                </Link>
+                <Link className="ix-text-link" href="#contact">
+                  Discuss Your Project ↗
+                </Link>
               </div>
             </div>
-            <div className="px-hero-bottom">
-              <span>ONE PROPERTY. CONNECTED EXPERTISE.</span>
-              <a href="#solutions">
-                Discover the SH360 approach <span>↓</span>
-              </a>
+            <div className="ix-equipment-note">
+              <span>01 / DISTRIBUTION & PROTECTION</span>
+              <p>
+                A considered foundation.
+                <br />
+                From supply to everyday use.
+              </p>
+            </div>
+            <div className="ix-hero-bottom">
+              <span>ENGINEERING. CONNECTIVITY. COMPLETE PROPERTY CARE.</span>
+              <span>
+                ILLUSTRATIVE EQUIPMENT STUDY <b>↓</b>
+              </span>
             </div>
           </div>
+          <svg
+            className="ix-current"
+            viewBox="0 0 500 130"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              className="ix-current-base"
+              d="M0 100H160L205 55H350L395 10H500"
+            />
+            <path
+              className="ix-current-signal"
+              d="M0 100H160L205 55H350L395 10H500"
+            />
+            <circle cx="205" cy="55" r="4" />
+            <circle cx="395" cy="10" r="4" />
+          </svg>
         </section>
-        <section className="px-expertise px-section" id="solutions">
+        <section className="ix-expertise ix-section" id="solutions">
           <div className="px-wrap">
-            <Reveal className="px-section-top">
-              <p className="px-label">WHAT WE DO</p>
+            <div className="ix-section-heading">
+              <p className="ix-eyebrow">01 / OUR EXPERTISE</p>
               <h2>
-                One partner.
+                Engineering at the core.
                 <br />
-                Multiple areas of expertise.
+                Property care around it.
               </h2>
               <p>
-                Modern properties work better when their systems work together.
-                We connect technical installations, upgrades and everyday
-                property care.
+                One point of contact for the systems that power your space, the
+                technology that connects it, and the work that keeps it running.
               </p>
-            </Reveal>
-            <div className="px-expertise-grid">
+            </div>
+            <div className="ix-expertise-grid">
               {services.slice(0, 3).map((s, i) => (
-                <Link
-                  href={`/services/${s.slug}`}
-                  className="px-expertise-item"
-                  key={s.slug}
-                >
-                  <span className="px-index">
-                    0{i + 1} / CORE SOLUTION <b>↗</b>
+                <Link href={`/services/${s.slug}`} key={s.slug}>
+                  <span className="ix-index">
+                    0{i + 1}
+                    <b>↗</b>
                   </span>
                   <h3>{s.title}</h3>
                   <p>
                     {i === 0
-                      ? "The infrastructure behind a dependable property. Wiring, distribution, lighting and fault diagnosis."
+                      ? "Wiring, distribution, circuit protection and electrical fault diagnosis."
                       : i === 1
-                        ? "Greater control over your environment. Connected lighting, sensors and considered automation."
-                        : "A practical connection to electric mobility. Site assessment, electrical integration and charger installation."}
+                        ? "Compatible controls, useful automation and connected environments."
+                        : "Charger installation, supply assessment and practical electrical integration."}
                   </p>
-                  <span className="px-explore">Explore the solution ↗</span>
                 </Link>
               ))}
-              <Link href="#property-services" className="px-expertise-property">
-                <span>04 / COMPLETE PROPERTY CARE</span>
-                <h3>The details that keep your space running.</h3>
-                <span>
-                  Plumbing · Carpentry · Cleaning · Maintenance <b>↗</b>
+            </div>
+            <div className="ix-catalog-link" id="products">
+              <span>
+                Need a specific installation, repair or maintenance task?
+              </span>
+              <Link href="/services">Search the service catalog ↗</Link>
+            </div>
+          </div>
+        </section>
+        <section className="ix-engineering ix-section" id="engineering">
+          <div className="px-wrap">
+            <div className="ix-section-heading">
+              <p className="ix-eyebrow">02 / CONNECTED ENGINEERING</p>
+              <h2>
+                Three capabilities.
+                <br />
+                One connected approach.
+              </h2>
+              <p>
+                Select a system to see the work, the equipment and the questions
+                that shape a practical solution.
+              </p>
+            </div>
+            <SystemsExplorer />
+          </div>
+        </section>
+        <section className="ix-property ix-section" id="property-services">
+          <div className="px-wrap">
+            <div className="ix-section-heading">
+              <p className="ix-eyebrow">03 / INTEGRATED PROPERTY SERVICES</p>
+              <h2>
+                The essential work.
+                <br />
+                Considered in every detail.
+              </h2>
+              <p>
+                Everyday services with a clear scope. Explore the work, then
+                tell us what needs attention.
+              </p>
+            </div>
+            <div className="ix-property-grid">
+              <Link className="ix-plumbing" href="/services/plumbing">
+                <Image
+                  src="/visuals/plumbing.webp"
+                  alt="Conceptual sectional water-supply and plumbing study"
+                  width={1536}
+                  height={1024}
+                  sizes="(max-width:700px) 100vw, 50vw"
+                  unoptimized
+                />
+                <div>
+                  <span className="ix-eyebrow">04 / WATER & FIXTURES</span>
+                  <h3>
+                    Plumbing <b>↗</b>
+                  </h3>
+                  <p>
+                    Leaks, taps, fixtures and accessible pipework. Practical
+                    repair starts with the source of the issue.
+                  </p>
+                </div>
+              </Link>
+              <Link className="ix-carpentry" href="/services/carpentry">
+                <Image
+                  src="/visuals/joinery-detail.webp"
+                  alt="Original illustrative close-up of oak joinery and cabinet fitting details"
+                  width={1536}
+                  height={1024}
+                  sizes="(max-width:700px) 100vw, 50vw"
+                  unoptimized
+                />
+                <div>
+                  <span className="ix-eyebrow">05 / FITTING & FINISH</span>
+                  <h3>
+                    Carpentry <b>↗</b>
+                  </h3>
+                  <p>
+                    Doors, cabinets, shelving and wooden fixtures. Careful
+                    fitting for functional spaces.
+                  </p>
+                </div>
+              </Link>
+              <Link className="ix-cleaning" href="/services/cleaning">
+                <Image
+                  src="/visuals/interior.webp"
+                  alt="Illustrative well-maintained kitchen and living environment"
+                  width={1536}
+                  height={1024}
+                  sizes="(max-width:700px) 100vw, 30vw"
+                  unoptimized
+                />
+                <div>
+                  <span className="ix-eyebrow">06 / ENVIRONMENT</span>
+                  <h3>
+                    Cleaning <b>↗</b>
+                  </h3>
+                  <p>
+                    General, deep and post-maintenance cleaning, with agreed
+                    rooms and surface care.
+                  </p>
+                </div>
+              </Link>
+              <Link
+                className="ix-maintenance"
+                href="/services/property-maintenance"
+              >
+                <span className="ix-eyebrow">07 / COMPLETE PROPERTY CARE</span>
+                <h3>
+                  Maintenance.
+                  <br />
+                  Keep the whole
+                  <br />
+                  property in view.
+                </h3>
+                <p>
+                  Group fixture repairs, hardware adjustments and related
+                  electrical or plumbing upkeep into one clear brief.
+                </p>
+                <span className="ix-maintenance-line">
+                  INSPECT <i /> DEFINE <i /> COORDINATE
+                </span>
+                <span className="ix-text-link">
+                  Plan your property maintenance ↗
                 </span>
               </Link>
             </div>
           </div>
         </section>
-        <section className="px-about px-section" id="about">
-          <div className="px-wrap px-about-grid">
-            <div>
-              <p className="px-label">WHO WE ARE / SH360</p>
-              <h2>
-                Beyond installations.
-                <br />
-                Complete technical
-                <br />
-                solutions.
-              </h2>
-            </div>
-            <div>
-              <p className="px-large-copy">
-                A building is more than a collection of individual systems. Its
-                services need to work as one.
-              </p>
-              <p>
-                SH360 brings electrical engineering, connected technology and
-                essential property services together. Our approach begins with
-                understanding the requirements of each space and defining the
-                work needed for a practical result.
-              </p>
-              <p>
-                From electrical upgrades and smart controls to maintenance
-                issues, the aim is simpler coordination through one point of
-                contact.
-              </p>
-              <Link className="px-text-link" href="#approach">
-                Discover the SH360 approach ↗
-              </Link>
-            </div>
-          </div>
-        </section>
-        {services.slice(0, 3).map((s, i) => (
-          <Capability service={s} index={i} key={s.slug} />
-        ))}
-        <section className="px-section px-property" id="property-services">
+        <section className="ix-approach ix-section" id="about">
           <div className="px-wrap">
-            <div className="px-section-top">
-              <p className="px-label">PROPERTY CARE & ESSENTIAL SERVICES</p>
-              <h2>
-                The essential work behind
-                <br />a well-maintained space.
-              </h2>
-              <p>
-                Water systems, fittings, finishes and everyday upkeep all
-                contribute to how comfortably a property operates.
-              </p>
-            </div>
-            <div className="px-property-feature">
-              <Scene
-                name="plumbing"
-                alt="Conceptual kitchen and bathroom cutaway with water supply routes"
-              />
+            <div className="ix-approach-top">
               <div>
-                <span className="px-label">04 / PLUMBING</span>
-                <h3>
-                  Reliable water systems.
+                <p className="ix-eyebrow">04 / THE SH360 APPROACH</p>
+                <h2>
+                  Technical thinking.
                   <br />
-                  Practical repairs.
-                </h3>
+                  Practical execution.
+                </h2>
+              </div>
+              <div>
                 <p>
-                  Leaks, taps, sinks, bathroom fittings and accessible pipework.
-                  Understand what needs attention and the work involved.
+                  SH360 brings electrical engineering, connected technology and
+                  property services together. We start with the requirements of
+                  the space and define the work around them.
                 </p>
-                <Link className="px-text-link" href="/services/plumbing">
-                  Explore plumbing ↗
-                </Link>
+                <div className="ix-principles">
+                  <span>Engineering-led decisions</span>
+                  <span>Multiple services, one contact</span>
+                  <span>Clear scope & communication</span>
+                  <span>Installation & ongoing care</span>
+                </div>
               </div>
             </div>
-            <div className="px-property-feature px-property-reverse">
-              <Scene
-                name="carpentry"
-                alt="Conceptual architectural interior with fitted oak cabinets, shelving and joinery"
-              />
-              <div>
-                <span className="px-label">05 / CARPENTRY</span>
-                <h3>
-                  Practical craftsmanship.
-                  <br />
-                  Functional spaces.
-                </h3>
-                <p>
-                  Door adjustments, cabinet installation, shelving and furniture
-                  fitting. Share the dimensions and materials so the scope can
-                  be confirmed.
-                </p>
-                <Link className="px-text-link" href="/services/carpentry">
-                  Explore carpentry ↗
-                </Link>
-              </div>
-            </div>
-            <div className="px-care-pair">
-              {services.slice(5).map((s, i) => (
-                <Link href={`/services/${s.slug}`} key={s.slug}>
-                  <span className="px-label">
-                    0{i + 6} / {s.title.toUpperCase()}
-                  </span>
-                  <h3>
-                    {i === 0
-                      ? "Clean spaces. Better everyday environments."
-                      : "Keeping the whole property in working order."}
-                  </h3>
-                  <p>
-                    {i === 0
-                      ? "General and deep cleaning, kitchens, bathrooms, move-in and post-maintenance cleaning. Define the areas and surfaces that need care."
-                      : "Fixtures, fittings, minor repairs and coordinated maintenance tasks. Start with a clear room-by-room list of what needs attention."}
-                  </p>
-                  <span className="px-text-link">
-                    Explore {s.short.toLowerCase()} ↗
-                  </span>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-        <section className="px-section px-environments">
-          <div className="px-wrap">
-            <p className="px-label">APPLICATIONS & ENVIRONMENTS</p>
-            <h2>Designed around your space.</h2>
-            <div className="px-environment-grid">
-              {[
-                [
-                  "Residential properties",
-                  "Work around the way you live, from individual repairs to connected-home upgrades.",
-                ],
-                [
-                  "Offices & workplaces",
-                  "Consider occupancy, network infrastructure and access when planning technical work.",
-                ],
-                [
-                  "Commercial properties",
-                  "Discuss equipment loads, operating hours and permissions before defining scope.",
-                ],
-                [
-                  "Managed properties",
-                  "Bring a clear defect list and coordinate access across tenants or shared areas.",
-                ],
-              ].map(([a, b], i) => (
-                <div key={a}>
+            <div className="ix-process" id="process">
+              {processSteps.map(([title, description], i) => (
+                <div key={title}>
                   <span>0{i + 1}</span>
-                  <h3>{a}</h3>
-                  <p>{b}</p>
+                  <h3>{title}</h3>
+                  <p>{description}</p>
                 </div>
               ))}
             </div>
-            <Link className="px-text-link" href="#contact">
-              Discuss your property requirements ↗
-            </Link>
+            <div className="ix-audience">
+              <span>HOMES / WORKPLACES / COMMERCIAL / MANAGED PROPERTIES</span>
+              <Link href="#contact">Discuss your property requirements ↗</Link>
+            </div>
           </div>
         </section>
         <Evidence />
-        <VideoGallery />
-        <Process />
-        <section className="px-section px-approach" id="approach">
-          <div className="px-wrap px-approach-grid">
+        <section className="ix-questions ix-section" id="questions">
+          <div className="px-wrap ix-questions-grid">
             <div>
-              <p className="px-label">THE SH360 APPROACH</p>
+              <p className="ix-eyebrow">05 / BEFORE WE START</p>
               <h2>
-                Technical thinking.
-                <br />
-                Practical execution.
+                A little clarity.
+                <br />A better starting point.
               </h2>
               <p>
-                Start with the requirements.
-                <br />
-                Make the scope clear.
-                <br />
-                Focus on the work that matters.
+                Service scope, site requirements and quotations depend on your
+                property. Start here, or explore a service guide for the
+                details.
               </p>
+              <Link className="ix-text-link" href="/services">
+                Browse all services ↗
+              </Link>
             </div>
-            <div>
-              {[
+            <FAQ
+              items={[
                 [
-                  "Engineering-led approach",
-                  "Consider the property, existing systems and practical constraints before selecting a solution.",
+                  "What can I ask SH360 to help with?",
+                  "Electrical engineering, smart automation, EV charging, plumbing, carpentry, cleaning and property maintenance. Exact scope, location and availability are confirmed in conversation.",
                 ],
                 [
-                  "Multiple services, one point of contact",
-                  "Discuss related electrical, technology and maintenance requirements together.",
+                  "Can I combine services in one inquiry?",
+                  "Yes. Select the relevant services and list the tasks so related work can be reviewed together.",
                 ],
                 [
-                  "Solutions based on actual needs",
-                  "Choose work and equipment for the problem being solved, rather than adding unnecessary complexity.",
+                  "Will I need a site assessment?",
+                  "Photos can help start a review. Electrical capacity, concealed work, access and larger installations may need an on-site assessment before a scope is confirmed.",
                 ],
                 [
-                  "Clear scope & communication",
-                  "Clarify tasks, materials, access and exclusions before proceeding.",
+                  "How does the quote inquiry work?",
+                  "Complete the form to prepare a WhatsApp message. Review and send it in WhatsApp, attaching photos there if helpful. No message is sent automatically.",
                 ],
-                [
-                  "Installation & ongoing support",
-                  "Discuss operation, care and future maintenance as part of the handover.",
-                ],
-              ].map(([a, b], i) => (
-                <div className="px-principle" key={a}>
-                  <span>0{i + 1}</span>
-                  <div>
-                    <h3>{a}</h3>
-                    <p>{b}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-        <section className="px-section px-tech">
-          <div className="px-wrap">
-            <div className="px-section-top">
-              <p className="px-label">SYSTEMS & TECHNOLOGIES</p>
-              <h2>
-                The right technology starts
-                <br />
-                with the right application.
-              </h2>
-              <p>
-                Compatibility, installation conditions and day-to-day use matter
-                more than a logo on a box.
-              </p>
-            </div>
-            <div className="px-tech-grid">
-              {[
-                [
-                  "Electrical systems",
-                  "Supply capacity → Circuit design → Suitable protection",
-                ],
-                [
-                  "Smart technology",
-                  "Connectivity → Device compatibility → Useful control",
-                ],
-                [
-                  "EV charging equipment",
-                  "Vehicle needs → Supply assessment → Charger selection",
-                ],
-                [
-                  "Building services",
-                  "Existing condition → Materials → Maintainability",
-                ],
-              ].map(([a, b]) => (
-                <div key={a}>
-                  <h3>{a}</h3>
-                  <p>{b}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-        <div className="px-catalog">
-          <ProductsSection />
-        </div>
-        <section className="px-section px-faq">
-          <div className="px-wrap px-faq-grid">
-            <div>
-              <p className="px-label">GOOD TO KNOW</p>
-              <h2>
-                Answers before
-                <br />
-                you get started.
-              </h2>
-              <p>A little clarity goes a long way.</p>
-            </div>
-            <FAQ />
+              ]}
+            />
           </div>
         </section>
         <InquiryForm />

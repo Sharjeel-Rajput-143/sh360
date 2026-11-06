@@ -9,15 +9,8 @@ import { useBrand } from "./BrandProvider";
 export default function PublicHeader() {
   const [open, setOpen] = useState(false),
     [menu, setMenu] = useState("");
-  const {
-    query,
-    setQuery,
-    searchOpen,
-    setSearchOpen,
-    toggleSavedView,
-    showSaved,
-    savedIds,
-  } = useShop();
+  const { query, setQuery, searchOpen, setSearchOpen, showSaved, savedIds } =
+    useShop();
   const brand = useBrand();
   const pathname = usePathname();
   useEffect(() => {
@@ -93,7 +86,7 @@ export default function PublicHeader() {
                     </Link>
                   ))}
                   {i === 1 && (
-                    <Link href="/#products" onClick={close}>
+                    <Link href="/services#products" onClick={close}>
                       View service catalog ↗
                     </Link>
                   )}
@@ -129,15 +122,13 @@ export default function PublicHeader() {
           >
             <SearchIcon />
           </button>
-          <Link
-            href="/?saved=1#products"
+          {/* A document navigation resets transient search state before opening saved services. */}
+          <a
+            href={"/services?saved=1#products"}
             aria-label={`Saved services (${savedIds.length})`}
-            onClick={() => {
-              if (!showSaved) toggleSavedView();
-            }}
           >
             <HeartIcon filled={showSaved} />
-          </Link>
+          </a>
           <button
             className="px-mobile"
             aria-expanded={open}
@@ -153,12 +144,12 @@ export default function PublicHeader() {
         <form
           className="px-search"
           role="search"
-          action="/#products"
+          action="/services#products"
           onSubmit={(e) => {
-            if (document.getElementById("products")) {
+            if (document.querySelector(".px-catalog #products")) {
               e.preventDefault();
               setSearchOpen(false);
-              document.getElementById("products")?.scrollIntoView();
+              document.querySelector(".px-catalog #products")?.scrollIntoView();
             }
           }}
         >

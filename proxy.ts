@@ -12,6 +12,11 @@ export function proxy(request: NextRequest) {
     if (tab && tab.length <= 24 && TAB.test(tab)) {
       return NextResponse.rewrite(new URL(`/t/${tab}`, request.url));
     }
+    if (searchParams.has("q") || searchParams.get("saved") === "1") {
+      const url = request.nextUrl.clone();
+      url.pathname = "/services";
+      return NextResponse.rewrite(url);
+    }
     return NextResponse.next();
   }
 

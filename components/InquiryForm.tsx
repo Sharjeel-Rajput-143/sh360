@@ -96,7 +96,11 @@ export default function InquiryForm({
                   required
                   name={name}
                   type={type}
-                  pattern={type === "tel" ? "[+0-9() .-]{7,25}" : undefined}
+                  pattern={
+                    type === "tel"
+                      ? String.raw`[+0-9\(\) .\-]{7,25}`
+                      : undefined
+                  }
                   title={
                     type === "tel"
                       ? "Enter a phone number with 7–25 characters"

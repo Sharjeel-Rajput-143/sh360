@@ -6,11 +6,11 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 catalog=json.loads(Path('data/catalog.json').read_text())
 slugs=['electrical-engineering','iot-smart-automation','ev-charging','plumbing','carpentry','cleaning','property-maintenance']
-routes=[('/',200),('/projects',200),('/privacy',200),('/terms',200),('/admin/login',200),('/api/admin/catalog',401),('/services/not-a-service',404)]
+routes=[('/',200),('/services',200),('/?q=wiring',200),('/?saved=1',200),('/projects',200),('/privacy',200),('/terms',200),('/admin/login',200),('/api/admin/catalog',401),('/services/not-a-service',404)]
 routes += [('/services/'+s,200) for s in slugs]
 routes += [('/p/'+p['id'],200) for p in catalog['products']]
 routes += [('/?tab='+c['id'],200) for c in catalog['categories']]
-routes += [('/visuals/'+n+'.webp',200) for n in ['building','electrical','smart','ev','plumbing','carpentry','interior']]
+routes += [('/visuals/'+n+'.webp',200) for n in ['building','electrical','smart','ev','plumbing','carpentry','interior','switchgear','wiring-detail','ev-installation','joinery-detail']]
 def check(item):
     path,expected=item
     try:
@@ -21,6 +21,9 @@ def check(item):
         status=e.code
         body=e.read()
     assert status==expected,(path,status,expected)
+    if path == '/':
+        assert b'Powering Spaces.' in body, 'Corrective hero missing'
+        assert b'switchgear.webp' in body, 'Electrical hero asset missing'
     if path.startswith('/services/') and expected==200:
         assert b'Project or service description' in body,path
     return f'{status} {path}'

@@ -1,0 +1,21 @@
+{
+  "tool": "built-in image_gen",
+  "assets": [
+    {
+      "path": "public/visuals/switchgear.webp",
+      "prompt": "A cinematic precision-engineered electrical distribution cabinet, three-quarter frontal view, tall graphite steel enclosure open to reveal expertly organized rows of realistic modular circuit breakers, neatly routed insulated wiring contained in cable ducts, protected copper busbar assembly, precise terminals and cable entry. Cabinet is de-energized studio product visualization. No exposed loose wires, no sparks, no hands. Dark graphite studio background seamlessly fading into #1d1e1e at LEFT with generous empty left 45 percent for website headline, equipment occupying right 55 percent. Refined side lighting, natural copper details, satin steel, subtle depth. Landscape 16:10 composition, professional industrial photography realism, no text, labels, invented readings, brand logos or watermarks. Never futuristic neon or cartoon."
+    },
+    {
+      "path": "public/visuals/wiring-detail.webp",
+      "prompt": "Original editorial industrial photograph-style render, macro close-up of organized electrical installation inside a distribution enclosure. Precisely dressed blue and neutral insulated conductors entering modular terminal blocks and circuit protection devices, realistic cable ducting, matte gray steel backplate. No loose live ends, no hands, no sparks, no legible labels or branding. Balanced warm industrial side lighting, steel gray and restrained copper palette, believable professional engineering equipment detail. Landscape 3:2, no text or watermark. Different composition from a complete cabinet hero."
+    },
+    {
+      "path": "public/visuals/ev-installation.webp",
+      "prompt": "Original photoreal architectural equipment visualization of an unbranded dark wall mounted EV charging unit on a warm gray concrete exterior garage wall, charging cable neatly routed to a silver electric vehicle partly visible in the driveway. Contemporary realistic residential installation environment, natural daylight, subtle landscaping. Focus on charger and cable connection, not furnished interior or isometric dollhouse. Restrained graphite, off-white and natural materials. Landscape 3:2 professional editorial photograph, no text, logos, readings, watermark or people."
+    },
+    {
+      "path": "public/visuals/joinery-detail.webp",
+      "prompt": "Original photoreal editorial craftsmanship image, close-up of beautifully fitted natural oak cabinet doors, a clean mortise and tenon joinery sample and brushed metal hinges in a quiet modern workshop. Warm wood grain, precise fitting details, soft side daylight, subtle tool marks. Professional joinery detail photograph, tactile, believable, calm. Landscape 3:2, no text, branding, watermark, people or architectural cutaway."
+    }
+  ]
+}

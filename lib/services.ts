@@ -23,7 +23,7 @@ export const services: Service[] = [
     intro:
       "From the distribution board to the last lighting point, a dependable electrical system starts with understanding the property and the demands placed on it.",
     category: "electrical",
-    image: "electrical",
+    image: "wiring-detail",
     tasks: [
       [
         "Wiring & installation",
@@ -126,7 +126,7 @@ export const services: Service[] = [
     intro:
       "An EV charger is part of the building’s electrical system. Capacity, parking position, cable routing and protection all need consideration before equipment is installed.",
     category: "ev-charger",
-    image: "ev",
+    image: "ev-installation",
     tasks: [
       [
         "Residential charging",
@@ -229,7 +229,7 @@ export const services: Service[] = [
     heading: "Made to fit the way you live.",
     intro:
       "Doors, cabinets and shelving need careful fitting to remain useful. Tell us what needs adjusting, repairing or installing so the practical scope can be confirmed.",
-    image: "carpentry",
+    image: "joinery-detail",
     tasks: [
       [
         "Doors & frames",

@@ -1,3 +1,5 @@
+> Superseded by [the corrective review](CORRECTIVE-REVIEW.md). The active localhost checkout is now `~/sh360`.
+
 # Local review
 
 Open http://localhost:3000. The development server runs from `/Users/muhammadhammad/Desktop/SH360-Seven/site` on `feature/sh360-complete-revamp`. The original `~/sh360` checkout stays intact. No push, merge or deployment was performed.
