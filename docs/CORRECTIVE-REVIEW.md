@@ -1,3 +1,5 @@
+> Superseded by [the editorial refinement review](EDITORIAL-REVIEW.md).
+
 # Industrial editorial redesign — local review
 
 This replaces the earlier long architectural-house homepage. The active checkout is now `~/sh360`, branch `feature/sh360-complete-revamp`, served at http://localhost:3000. No production configuration, push, merge or deployment changed.

@@ -10,6 +10,8 @@ routes=[('/',200),('/services',200),('/?q=wiring',200),('/?saved=1',200),('/proj
 routes += [('/services/'+s,200) for s in slugs]
 routes += [('/p/'+p['id'],200) for p in catalog['products']]
 routes += [('/?tab='+c['id'],200) for c in catalog['categories']]
+routes += [('/photography/electrical-installation-'+str(width)+'.webp',200) for width in [640,1280,1920]]
+routes += [('/photography/LICENSE.md',200)]
 routes += [('/visuals/'+n+'.webp',200) for n in ['building','electrical','smart','ev','plumbing','carpentry','interior','switchgear','wiring-detail','ev-installation','joinery-detail']]
 def check(item):
     path,expected=item
@@ -22,8 +24,8 @@ def check(item):
         body=e.read()
     assert status==expected,(path,status,expected)
     if path == '/':
-        assert b'Powering Spaces.' in body, 'Corrective hero missing'
-        assert b'switchgear.webp' in body, 'Electrical hero asset missing'
+        assert b'Engineering the Spaces' in body, 'Corrective hero missing'
+        assert b'electrical-installation-1280.webp' in body, 'Licensed hero photograph missing'
     if path.startswith('/services/') and expected==200:
         assert b'Project or service description' in body,path
     return f'{status} {path}'

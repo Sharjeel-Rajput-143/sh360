@@ -7,27 +7,27 @@ import Link from "next/link";
 const systems = [
   {
     id: "electrical",
-    title: "Electrical infrastructure",
+    title: "Electrical engineering",
     number: "01",
     image: "wiring-detail",
-    heading: "Start with the supply.",
+    heading: "Installation, upgrades and fault finding.",
     description:
-      "The distribution board, protective devices and circuit routes form the foundation for lighting, sockets and connected equipment.",
+      "Review wiring, distribution boards and circuit protection, install or replace lighting and sockets, and investigate electrical faults. Inspection and maintenance requirements depend on the existing installation.",
     points: [
-      "Existing supply and circuit arrangement",
-      "Equipment demand and installation routes",
-      "Appropriate protection and accessible isolation",
+      "Wiring, distribution boards and circuit protection",
+      "Lighting, switches, sockets and equipment connections",
+      "Fault finding, inspection and maintenance",
     ],
     destination: "electrical-engineering",
   },
   {
     id: "smart",
-    title: "Intelligent control",
+    title: "IoT & smart automation",
     number: "02",
     image: "smart",
-    heading: "Connect around a useful routine.",
+    heading: "Lighting, sensors and connected control.",
     description:
-      "Lighting, sensors and controls need compatible devices and dependable connectivity. The useful starting point is what you want your space to do.",
+      "Configure smart lighting, review device compatibility and plan useful sensor-based routines. Existing wiring, network coverage and supported integrations determine what can work together.",
     points: [
       "Lighting scenes and switching preferences",
       "Device protocols and network coverage",
@@ -37,12 +37,12 @@ const systems = [
   },
   {
     id: "ev",
-    title: "Electric mobility",
+    title: "EV charging",
     number: "03",
     image: "ev-installation",
-    heading: "Bring the building to the parking space.",
+    heading: "Assess the supply. Plan the installation.",
     description:
-      "An EV charger connects the vehicle to the property's electrical infrastructure. Parking access, supply capacity and the cable route shape the installation.",
+      "Review electrical capacity, charger compatibility and parking access before defining the cable route, protection and setup. Share vehicle and charger details when requesting an assessment.",
     points: [
       "Vehicle needs and charger compatibility",
       "Parking position and cable route",
@@ -117,16 +117,13 @@ export default function SystemsExplorer({
             width={1536}
             height={1024}
             sizes="(max-width: 700px) 100vw, 65vw"
-            alt={`Conceptual architectural study of ${current.title.toLowerCase()}`}
+            alt={`Conceptual illustration of ${current.title.toLowerCase()}`}
             unoptimized
           />
-          <p>
-            <span className="px-dot" /> SYSTEM STUDY / {current.number}
-            <span>CONCEPTUAL ILLUSTRATION</span>
-          </p>
+          <p>Conceptual {current.title.toLowerCase()} illustration</p>
         </div>
         <div className="px-explorer-copy">
-          <p className="px-label">THE SYSTEM IN CONTEXT</p>
+          <p className="px-label">TYPICAL SCOPE</p>
           <h3>{current.heading}</h3>
           <p>{current.description}</p>
           <ul>
