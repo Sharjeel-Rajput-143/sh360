@@ -50,7 +50,7 @@ export default function InquiryForm({
     <section id="contact" className="px-section px-inquiry">
       <div className="px-wrap px-inquiry-grid">
         <div>
-          <p className="px-label">GET IN TOUCH</p>
+          <p className="px-label">CONTACT & INQUIRY</p>
           <h2>
             Tell us what
             <br />

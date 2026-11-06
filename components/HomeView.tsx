@@ -1,10 +1,10 @@
 import type { Catalog } from "@/lib/products";
 import PublicShell from "./PublicShell";
-import TemporaryHomeHero from "./TemporaryHomeHero";
+import EngineeringHero from "./EngineeringHero";
 import Capabilities from "./Capabilities";
 import InquiryForm from "./InquiryForm";
 import Evidence from "./Evidence";
-import { AboutSH360, WhereWeWork, HowWeWork, WhySH360 } from "./HomeCompanySections";
+import { AboutSH360, WhereWeWork, OurApproach } from "./HomeCompanySections";
 
 export default function HomeView({
   catalog,
@@ -16,13 +16,12 @@ export default function HomeView({
   return (
     <PublicShell catalog={catalog} initialCategory={initialCategory}>
       <main id="main" className="ix-home ed-home cp-home">
-        <TemporaryHomeHero brand={catalog.brand} />
+        <EngineeringHero brand={catalog.brand} />
         <AboutSH360 />
         <Capabilities />
         <WhereWeWork />
         <Evidence selected />
-        <HowWeWork />
-        <WhySH360 />
+        <OurApproach />
         <InquiryForm />
       </main>
     </PublicShell>

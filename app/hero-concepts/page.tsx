@@ -3,22 +3,21 @@ import Image from "next/image";
 import { heroConcepts } from "@/components/HeroConcepts";
 import PublicShell from "@/components/PublicShell";
 import { getCatalog } from "@/lib/catalog";
-export const metadata = { title: "Hero concepts — pending approval | SH360" };
+export const metadata = { title: "Archived hero proposals | SH360" };
 export default async function ConceptIndex() {
   return (
     <PublicShell catalog={await getCatalog()}>
       <main id="main" className="hc-index px-wrap">
-        <p className="ix-eyebrow">SH360 / HERO DESIGN REVIEW</p>
+        <p className="ix-eyebrow">SH360 / HERO DESIGN ARCHIVE</p>
         <h1>
-          Three compositions.
+          Earlier proposals.
           <br />
-          One decision to make.
+          Preserved for reference.
         </h1>
         <p className="hc-index-intro">
-          These are proposals, not an approved direction. All three retain the
-          current theme, company positioning and licensed reference photograph
-          so you can compare the layout itself. The live homepage hero has not
-          been replaced.
+          These three earlier proposals were rejected and are retained as an
+          archive. The homepage now implements the separately specified
+          Engineering Blueprint direction. These are not current design options.
         </p>
         <div className="hc-index-list">
           {Object.entries(heroConcepts).map(([key, concept]) => (
@@ -66,8 +65,7 @@ export default async function ConceptIndex() {
           ))}
         </div>
         <p className="hc-index-end">
-          Approval remains pending. A concept will only replace the homepage
-          hero after you choose and approve it.
+          None of these proposals was approved or applied to the homepage.
         </p>
         <Link href="/" className="ix-text-link">
           Return to the current homepage ↗

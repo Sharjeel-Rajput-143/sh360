@@ -46,34 +46,26 @@ const stages = [
   ["Scope & Quotation", "Review the proposed tasks, materials, exclusions and quotation. Clarify responsibilities and arrangements before agreeing to proceed."],
   ["Execution & Handover", "Arrange access for the agreed work. Review the completed scope and discuss relevant operating instructions, care information and any remaining items."],
 ];
-export function HowWeWork() {
+export function OurApproach() {
   return (
-    <section id="how-we-work" className="ix-section rb-process" aria-labelledby="process-title">
+    <section id="approach" className="ix-section rb-approach" aria-labelledby="approach-title">
       <div className="px-wrap">
+        <span id="how-we-work" className="cp-anchor" />
         <span id="process" className="cp-anchor" />
-        <SectionHeading id="process-title" label="HOW WE WORK" title="From the first brief to the agreed work.">
-          A clear sequence for discussing requirements, defining the scope and reviewing the result.
+        <SectionHeading id="approach-title" label="OUR APPROACH" title="Understand the property. Define the work.">
+          From the first inquiry to handover, clarify the requirements and agree what is included before proceeding.
         </SectionHeading>
-        <ol className="rb-timeline">
-          {stages.map(([title, text], i) => <li key={title}><span aria-hidden="true">0{i + 1}</span><h3>{title}</h3><p>{text}</p></li>)}
-        </ol>
-      </div>
-    </section>
-  );
-}
-export function WhySH360() {
-  return (
-    <section id="why-sh360" className="ix-section rb-why" aria-labelledby="why-title">
-      <div className="px-wrap">
-        <SectionHeading id="why-title" label="WHY SH360" title="A connected brief for work that overlaps.">
-          Useful when your requirements cross more than one part of a property.
-        </SectionHeading>
-        <div className="rb-reasons">
-          <article><h3>Technical and practical work, together.</h3><p>The service range brings electrical systems, connected technology and everyday property needs into one place to explore.</p></article>
-          <article><h3>One inquiry for a mixed brief.</h3><p>Select multiple services in the inquiry form and describe the overall requirement, rather than preparing a separate request for every task.</p></article>
-          <article><h3>Scope information before you ask.</h3><p>Each service guide sets out example tasks, information to prepare and common questions, helping you describe the work you need.</p></article>
+        <div className="bp-approach-grid">
+          <aside className="bp-approach-context" aria-label="A coordinated brief">
+            <h3>One brief.<br />Related requirements.</h3>
+            <p>Technical systems and everyday property needs can overlap. Select multiple services in one inquiry so the wider requirement can be discussed together.</p>
+            <p>Our service guides outline example tasks, information to prepare and common questions. Suitability, access, materials and availability are clarified for your property.</p>
+            <Link href="#contact" className="ix-text-link">Discuss your requirements ↗</Link>
+          </aside>
+          <ol className="bp-approach-stages">
+            {stages.map(([title, text], i) => <li key={title}><span aria-hidden="true">0{i + 1}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}
+          </ol>
         </div>
-        <Link href="#contact" className="ix-text-link">Start with your requirements ↗</Link>
       </div>
     </section>
   );

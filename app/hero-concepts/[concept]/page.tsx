@@ -17,7 +17,7 @@ export async function generateMetadata({
   const { concept } = await params;
   return {
     title: Object.hasOwn(heroConcepts, concept)
-      ? `${heroConcepts[concept as HeroConceptKey].name} — pending review | SH360`
+      ? `${heroConcepts[concept as HeroConceptKey].name} — archived proposal | SH360`
       : "Concept not found",
   };
 }
@@ -37,7 +37,7 @@ export default async function ConceptPage({
         <div className="hc-review-bar">
           <div className="px-wrap">
             <div>
-              <p>HERO DESIGN REVIEW / PENDING APPROVAL</p>
+              <p>HERO DESIGN ARCHIVED / NOT APPROVED</p>
               <strong>
                 {key.toUpperCase()}. {info.name}
               </strong>
@@ -69,8 +69,8 @@ export default async function ConceptPage({
             <p>{info.mobile}</p>
           </div>
           <p className="hc-approval-note">
-            This is an isolated proposal. The homepage hero remains unchanged
-            and is not approved.
+            This earlier proposal was not approved. The homepage now implements
+            the separately specified Engineering Blueprint direction.
           </p>
         </aside>
       </main>

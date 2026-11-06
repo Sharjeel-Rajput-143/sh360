@@ -35,11 +35,13 @@ def check(item):
         body=e.read()
     assert status==expected,(path,status,expected)
     if path == '/':
-        assert b'Engineering the Spaces' in body, 'Corrective hero missing'
-        assert b'electrical-installation-1280.webp' in body, 'Temporary hero photograph missing'
+        assert b'Built Around the Systems That Matter.' in body, 'Approved hero missing'
+        assert b'01 / ENGINEERING EVERYDAY SPACES' in body, 'Approved eyebrow missing'
+        assert b'aria-label="Capability index"' in body, 'Capability index missing'
+        assert b'electrical-installation-1280.webp' in body, 'Licensed hero photograph missing'
         parser=Sections();parser.feed(body.decode())
         assert parser.ids.count('capabilities') == 1, parser.ids
-        expected_sections=['top','about','capabilities','where-we-work','how-we-work','why-sh360','contact']
+        expected_sections=['top','about','capabilities','where-we-work','approach','contact']
         assert [s for s in parser.ids if s != 'projects'] == expected_sections, parser.ids
         for heading in ['Technical Thinking.', 'Share Your Requirements', 'Review &amp; Assessment', 'Scope &amp; Quotation', 'Execution &amp; Handover']:
             assert heading.encode() in body, heading
@@ -48,7 +50,7 @@ def check(item):
         if not any(p.get('verified') is True for p in json.loads(Path('data/evidence.json').read_text())['projects']):
             assert 'projects' not in parser.ids, 'Unverified work must stay hidden'
     if path.startswith('/hero-concepts/') and expected == 200:
-        assert b'PENDING APPROVAL' in body, path
+        assert b'ARCHIVED / NOT APPROVED' in body, path
         assert b'noindex' in body, path
     if path.startswith('/services/') and expected==200:
         assert b'Project or service description' in body,path

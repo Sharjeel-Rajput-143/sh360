@@ -1,3 +1,5 @@
+> Superseded by ENGINEERING-BLUEPRINT-REPORT.md, following the user-approved implementation direction.
+
 # Homepage balance review
 
 ## Implemented narrative

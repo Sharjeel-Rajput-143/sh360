@@ -1,3 +1,5 @@
+> Superseded by ENGINEERING-BLUEPRINT-REPORT.md, following the user-approved implementation direction.
+
 > Historical architecture review. See HOMEPAGE-BALANCE-REVIEW.md for the restored company narrative. Hero proposals remain unapproved.
 
 # Homepage architecture and hero review
