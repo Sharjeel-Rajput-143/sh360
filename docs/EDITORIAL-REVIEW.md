@@ -1,3 +1,5 @@
+> Historical review. Superseded by CAPABILITIES-HERO-REVIEW.md. The homepage hero remains pending approval.
+
 # Editorial hero and structural refinement
 
 Active checkout: `~/sh360`, branch `feature/sh360-complete-revamp`. Review at http://localhost:3000. This iteration refines the established graphite, warm off-white and copper direction; it does not introduce new branding.

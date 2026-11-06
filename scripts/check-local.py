@@ -4,6 +4,7 @@ import urllib.request
 import urllib.error
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
+from html.parser import HTMLParser
 catalog=json.loads(Path('data/catalog.json').read_text())
 slugs=['electrical-engineering','iot-smart-automation','ev-charging','plumbing','carpentry','cleaning','property-maintenance']
 routes=[('/',200),('/services',200),('/?q=wiring',200),('/?saved=1',200),('/projects',200),('/privacy',200),('/terms',200),('/admin/login',200),('/api/admin/catalog',401),('/services/not-a-service',404)]
@@ -13,6 +14,16 @@ routes += [('/?tab='+c['id'],200) for c in catalog['categories']]
 routes += [('/photography/electrical-installation-'+str(width)+'.webp',200) for width in [640,1280,1920]]
 routes += [('/photography/LICENSE.md',200)]
 routes += [('/visuals/'+n+'.webp',200) for n in ['building','electrical','smart','ev','plumbing','carpentry','interior','switchgear','wiring-detail','ev-installation','joinery-detail']]
+routes += [("/hero-concepts",200)]
+routes += [("/hero-concepts/"+concept,200) for concept in ["a","b","c"]]
+routes += [("/hero-concepts/not-a-concept",404),("/hero-concepts/toString",404)]
+routes += [("/hero-previews/"+concept+"-"+size+".jpg",200) for concept in ["a","b","c"] for size in ["desktop","mobile"]]
+class Sections(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.ids=[]
+    def handle_starttag(self,tag,attrs):
+        if tag == "section": self.ids.append(dict(attrs).get("id"))
 def check(item):
     path,expected=item
     try:
@@ -25,7 +36,15 @@ def check(item):
     assert status==expected,(path,status,expected)
     if path == '/':
         assert b'Engineering the Spaces' in body, 'Corrective hero missing'
-        assert b'electrical-installation-1280.webp' in body, 'Licensed hero photograph missing'
+        assert b'electrical-installation-1280.webp' in body, 'Temporary hero photograph missing'
+        parser=Sections();parser.feed(body.decode())
+        assert parser.ids.count('capabilities') == 1, parser.ids
+        assert 'engineering' not in parser.ids and 'property-services' not in parser.ids, parser.ids
+        if not any(p.get('verified') is True for p in json.loads(Path('data/evidence.json').read_text())['projects']):
+            assert 'projects' not in parser.ids, 'Unverified work must stay hidden'
+    if path.startswith('/hero-concepts/') and expected == 200:
+        assert b'PENDING APPROVAL' in body, path
+        assert b'noindex' in body, path
     if path.startswith('/services/') and expected==200:
         assert b'Project or service description' in body,path
     return f'{status} {path}'

@@ -63,3 +63,17 @@ test("catalog category deep-link ids remain unique and valid", () => {
   for (const p of catalog.products)
     assert.ok(catalog.categories.some((c) => c.id === p.category));
 });
+
+const { capabilities } = require("../lib/capabilities.ts");
+test("unified capabilities preserve all service destinations and engineering prominence", () => {
+  assert.equal(capabilities.length, 7);
+  assert.equal(new Set(capabilities.map((s) => s.slug)).size, 7);
+  assert.deepEqual(
+    new Set(capabilities.map((s) => s.slug)),
+    new Set(services.map((s) => s.slug)),
+  );
+  assert.deepEqual(
+    capabilities.filter((s) => s.primary).map((s) => s.slug),
+    ["electrical-engineering", "iot-smart-automation", "ev-charging"],
+  );
+});

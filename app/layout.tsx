@@ -8,6 +8,7 @@ import "./globals.css";
 import "./sh360-revamp.css";
 import "./public-design.css";
 import "./industrial-design.css";
+import "./capability-concepts.css";
 
 const sans = localFont({
   src: "./fonts/dm-sans-latin.woff2",
