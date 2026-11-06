@@ -11,7 +11,17 @@ import WhatsAppLink from "./WhatsAppLink";
 const PANEL_ID = "products-panel";
 
 export default function ProductsSection() {
-  const { categories, products: allProducts, category, select, query, setQuery, showSaved, toggleSavedView, savedIds } = useShop();
+  const {
+    categories,
+    products: allProducts,
+    category,
+    select,
+    query,
+    setQuery,
+    showSaved,
+    toggleSavedView,
+    savedIds,
+  } = useShop();
   const searching = query.trim().length > 0;
 
   const products = showSaved
@@ -26,7 +36,11 @@ export default function ProductsSection() {
       ? `Results for “${query.trim()}”`
       : (categories.find((c) => c.id === category)?.label ?? "Services");
 
-  const viewKey = showSaved ? "saved" : searching ? `q:${query.trim()}` : category;
+  const viewKey = showSaved
+    ? "saved"
+    : searching
+      ? `q:${query.trim()}`
+      : category;
 
   return (
     <section className="section" id="products">
@@ -35,8 +49,9 @@ export default function ProductsSection() {
           <p className="eyebrow">What we offer</p>
           <h2>Our services</h2>
           <p className="section-lead">
-            Tap <strong>Get Quote</strong> on any service and we&rsquo;ll send you the price on
-            WhatsApp.
+            Explore the current catalog, save useful services, or discuss the
+            scope and quotation on WhatsApp. Imagery is illustrative; scope and
+            availability require confirmation.
           </p>
           <CategoryTabs
             idPrefix="products"
@@ -67,14 +82,21 @@ export default function ProductsSection() {
                 <>
                   <h3>No saved services yet</h3>
                   <p>Tap the heart on any service to save it here.</p>
-                  <button type="button" className="btn btn-dark" onClick={toggleSavedView}>
+                  <button
+                    type="button"
+                    className="btn btn-dark"
+                    onClick={toggleSavedView}
+                  >
                     Browse services
                   </button>
                 </>
               ) : !searching ? (
                 <>
                   <h3>No services here yet</h3>
-                  <p>New services are coming soon. Tell us what you need on WhatsApp.</p>
+                  <p>
+                    New services are coming soon. Tell us what you need on
+                    WhatsApp.
+                  </p>
                   <div className="empty-actions">
                     <WhatsAppLink className="btn btn-wa">
                       <WhatsAppIcon className="btn-icon" />
@@ -85,13 +107,20 @@ export default function ProductsSection() {
               ) : (
                 <>
                   <h3>No services match “{query.trim()}”</h3>
-                  <p>Tell us what you need on WhatsApp and we&rsquo;ll take care of it.</p>
+                  <p>
+                    Tell us what you need on WhatsApp and we&rsquo;ll take care
+                    of it.
+                  </p>
                   <div className="empty-actions">
                     <WhatsAppLink className="btn btn-wa">
                       <WhatsAppIcon className="btn-icon" />
                       Ask on WhatsApp
                     </WhatsAppLink>
-                    <button type="button" className="btn btn-outline" onClick={() => setQuery("")}>
+                    <button
+                      type="button"
+                      className="btn btn-outline"
+                      onClick={() => setQuery("")}
+                    >
                       Clear search
                     </button>
                   </div>

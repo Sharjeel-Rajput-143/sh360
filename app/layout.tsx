@@ -1,14 +1,15 @@
 import type { ReactNode } from "react";
 import { preconnect } from "react-dom";
 import type { Metadata, Viewport } from "next";
-import { DM_Sans, Fraunces } from "next/font/google";
+import localFont from "next/font/local";
 import { BrandProvider } from "@/components/BrandProvider";
 import { getCatalog } from "@/lib/catalog";
 import "./globals.css";
 import "./sh360-revamp.css";
+import "./public-design.css";
 
-const sans = DM_Sans({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
-const serif = Fraunces({ subsets: ["latin"], variable: "--font-serif", display: "swap" });
+const sans = localFont({ src: "./fonts/dm-sans-latin.woff2", weight: "100 1000", variable: "--font-sans", display: "swap" });
+const serif = localFont({ src: "./fonts/fraunces-latin.woff2", weight: "100 900", variable: "--font-serif", display: "swap" });
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ||

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowIcon, LogoMark, WhatsAppIcon } from "@/components/Icons";
+import { WhatsAppIcon } from "@/components/Icons";
+import PublicShell from "@/components/PublicShell";
 import ProductImage from "@/components/ProductImage";
 import WhatsAppLink from "@/components/WhatsAppLink";
 import { getCatalog } from "@/lib/catalog";
@@ -49,26 +50,24 @@ export default async function ProductPage({ params }: Props) {
   const { id } = await params;
   const product = await findProduct(id);
   if (!product) notFound();
-  const { brand } = await getCatalog();
+  const catalog = await getCatalog();
 
   return (
-    <>
-      <header className="pp-bar">
-        <div className="container pp-bar-inner">
-          <Link href="/" className="logo">
-            <LogoMark className="logo-mark" />
-            <span>{brand}</span>
-          </Link>
-          <Link href={`/?tab=${product.category}#products`} className="btn btn-outline btn-sm">
-            All services
-            <ArrowIcon className="btn-icon" />
-          </Link>
-        </div>
-      </header>
-
-      <main className="container pp">
+    <PublicShell catalog={catalog}>
+      <main id="main" className="container pp">
+        <Link
+          href={`/?tab=${product.category}#products`}
+          className="px-text-link px-product-back"
+        >
+          ← Back to service catalog
+        </Link>
         <div className="pp-media">
-          <ProductImage src={product.image} alt={product.title} sizes="(min-width: 860px) 640px, 100vw" priority />
+          <ProductImage
+            src={product.image}
+            alt={product.title}
+            sizes="(min-width: 860px) 640px, 100vw"
+            priority
+          />
         </div>
         <div className="pp-info">
           <p className="eyebrow">{product.categoryLabel}</p>
@@ -84,7 +83,10 @@ export default async function ProductPage({ params }: Props) {
             <WhatsAppIcon className="btn-icon" />
             Get Quote on WhatsApp
           </WhatsAppLink>
-          <p className="pp-note">We reply with the price and the earliest available time slot.</p>
+          <p className="pp-note">
+            Confirm scope, availability and quotation details directly with
+            SH360.
+          </p>
         </div>
       </main>
 
@@ -94,6 +96,6 @@ export default async function ProductPage({ params }: Props) {
           Get Quote on WhatsApp
         </WhatsAppLink>
       </div>
-    </>
+    </PublicShell>
   );
 }

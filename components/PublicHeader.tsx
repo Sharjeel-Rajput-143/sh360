@@ -1,0 +1,158 @@
+"use client";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { LogoMark, SearchIcon, HeartIcon } from "./Icons";
+import { useShop } from "./ShopProvider";
+import { services } from "@/lib/services";
+import { useBrand } from "./BrandProvider";
+export default function PublicHeader() {
+  const [open, setOpen] = useState(false),
+    [menu, setMenu] = useState("");
+  const {
+    query,
+    setQuery,
+    searchOpen,
+    setSearchOpen,
+    toggleSavedView,
+    showSaved,
+    savedIds,
+  } = useShop();
+  const brand = useBrand();
+  useEffect(() => {
+    const close = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        setMenu("");
+        setSearchOpen(false);
+      }
+    };
+    window.addEventListener("keydown", close);
+    return () => window.removeEventListener("keydown", close);
+  }, [setSearchOpen]);
+  const close = () => {
+    setOpen(false);
+    setMenu("");
+  };
+  return (
+    <header className="px-header">
+      <div className="px-header-inner">
+        <Link href="/#top" className="px-logo" onClick={close}>
+          <LogoMark />
+          <span>
+            {brand}
+            <small>ENGINEERING & INTEGRATED SERVICES</small>
+          </span>
+        </Link>
+        <nav
+          id="public-nav"
+          aria-label="Main navigation"
+          className={open ? "open" : ""}
+        >
+          <Link href="/#top" onClick={close}>
+            Home
+          </Link>
+          {["Solutions", "Services"].map((label, i) => (
+            <div className="px-dropdown" key={label}>
+              <button
+                onClick={() => setMenu(menu === label ? "" : label)}
+                aria-expanded={menu === label}
+                aria-controls={`menu-${label}`}
+              >
+                {label} <span aria-hidden="true">⌄</span>
+              </button>
+              {menu === label && (
+                <div className="px-dropdown-list" id={`menu-${label}`}>
+                  {services.slice(i === 0 ? 0 : 3, i === 0 ? 3 : 7).map((s) => (
+                    <Link
+                      href={`/services/${s.slug}`}
+                      key={s.slug}
+                      onClick={close}
+                    >
+                      {s.title}
+                      <span>↗</span>
+                    </Link>
+                  ))}
+                  {i === 1 && (
+                    <Link href="/#products" onClick={close}>
+                      View service catalog ↗
+                    </Link>
+                  )}
+                </div>
+              )}
+            </div>
+          ))}
+          <Link href="/projects" onClick={close}>
+            Projects
+          </Link>
+          <Link href="/#about" onClick={close}>
+            About
+          </Link>
+          <Link href="/#contact" onClick={close}>
+            Contact
+          </Link>
+        </nav>
+        <div className="px-tools">
+          <Link className="px-quote" href="/#contact">
+            Get a Quote <span>↗</span>
+          </Link>
+          <button
+            aria-label="Search services"
+            aria-expanded={searchOpen}
+            onClick={() => {
+              setSearchOpen(!searchOpen);
+              setOpen(false);
+            }}
+          >
+            <SearchIcon />
+          </button>
+          <Link
+            href="/?saved=1#products"
+            aria-label={`Saved services (${savedIds.length})`}
+            onClick={() => {
+              if (!showSaved) toggleSavedView();
+            }}
+          >
+            <HeartIcon filled={showSaved} />
+          </Link>
+          <button
+            className="px-mobile"
+            aria-expanded={open}
+            aria-controls="public-nav"
+            aria-label={open ? "Close menu" : "Open menu"}
+            onClick={() => setOpen(!open)}
+          >
+            {open ? "✕" : "☰"}
+          </button>
+        </div>
+      </div>
+      {searchOpen && (
+        <form
+          className="px-search"
+          role="search"
+          action="/#products"
+          onSubmit={(e) => {
+            if (document.getElementById("products")) {
+              e.preventDefault();
+              setSearchOpen(false);
+              document.getElementById("products")?.scrollIntoView();
+            }
+          }}
+        >
+          <label htmlFor="service-search">Find a service</label>
+          <input
+            id="service-search"
+            name="q"
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Try wiring, lighting or cleaning…"
+            autoFocus
+          />
+          <button className="px-button" type="submit">
+            Search ↗
+          </button>
+        </form>
+      )}
+    </header>
+  );
+}

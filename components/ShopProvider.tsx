@@ -3,6 +3,7 @@
 import {
   createContext,
   useCallback,
+  useSyncExternalStore,
   useContext,
   useMemo,
   useState,
@@ -28,6 +29,12 @@ type ShopContextValue = {
   isSaved: (id: string) => boolean;
   toggleSave: (id: string) => void;
 };
+
+const subscribeUrl = () => () => {};
+const getUrlSaved = () =>
+  new URLSearchParams(window.location.search).get("saved") === "1";
+const getUrlQuery = () =>
+  (new URLSearchParams(window.location.search).get("q") || "").slice(0, 120);
 
 const ShopContext = createContext<ShopContextValue | null>(null);
 
@@ -58,8 +65,12 @@ export default function ShopProvider({
 }) {
   const { categories, products, videos } = catalog;
   const [category, setCategory] = useState(initialCategory);
-  const [query, setQueryState] = useState("");
-  const [showSaved, setShowSaved] = useState(false);
+  const [queryState, setQueryState] = useState<string | null>(null);
+  const urlQuery = useSyncExternalStore(subscribeUrl, getUrlQuery, () => "");
+  const query = queryState ?? urlQuery;
+  const [savedOverride, setShowSaved] = useState<boolean | null>(null);
+  const urlSaved = useSyncExternalStore(subscribeUrl, getUrlSaved, () => false);
+  const showSaved = savedOverride ?? urlSaved;
   const [searchOpen, setSearchOpen] = useState(false);
   const { ids: storedIds, toggle: toggleSave } = useSavedIds();
   // Ignore saved services that were deleted from the catalog.
@@ -75,6 +86,8 @@ export default function ShopProvider({
     try {
       const url = new URL(window.location.href);
       url.searchParams.set("tab", id);
+      url.searchParams.delete("saved");
+      url.searchParams.delete("q");
       window.history.replaceState(window.history.state, "", url);
     } catch {
       // Not critical (e.g. sandboxed previews).
@@ -87,9 +100,9 @@ export default function ShopProvider({
   }, []);
 
   const toggleSavedView = useCallback(() => {
-    setShowSaved((v) => !v);
+    setShowSaved((v) => !(v ?? urlSaved));
     setQueryState("");
-  }, []);
+  }, [urlSaved]);
 
   const value = useMemo<ShopContextValue>(
     () => ({
@@ -108,7 +121,20 @@ export default function ShopProvider({
       isSaved: (id) => savedIds.includes(id),
       toggleSave,
     }),
-    [categories, products, videos, category, select, query, setQuery, searchOpen, showSaved, toggleSavedView, savedIds, toggleSave],
+    [
+      categories,
+      products,
+      videos,
+      category,
+      select,
+      query,
+      setQuery,
+      searchOpen,
+      showSaved,
+      toggleSavedView,
+      savedIds,
+      toggleSave,
+    ],
   );
 
   return <ShopContext.Provider value={value}>{children}</ShopContext.Provider>;

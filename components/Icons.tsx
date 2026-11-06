@@ -180,6 +180,7 @@ export function LogoMark({ className }: IconProps) {
   return (
     <Image
       src="/logo-mark.png"
+      unoptimized
       alt=""
       width={96}
       height={96}

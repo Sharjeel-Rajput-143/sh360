@@ -35,7 +35,11 @@ function productLink(product: Product): string | null {
   return product.image.startsWith("http") ? product.image : null;
 }
 
-export function productWhatsappUrl(product: Product, brand: string, ad?: AdSource): string {
+export function productWhatsappUrl(
+  product: Product,
+  brand: string,
+  ad?: AdSource,
+): string {
   const lines = [
     `Hello ${brand}! 👋`,
     "I'd like to get a quote for this service:",
@@ -45,21 +49,52 @@ export function productWhatsappUrl(product: Product, brand: string, ad?: AdSourc
     `*Category:* ${product.categoryLabel}`,
     `*Details:* ${product.description}`,
   ];
-  if (product.specs.length) lines.push(`*Includes:* ${product.specs.join(", ")}`);
+  if (product.specs.length)
+    lines.push(`*Includes:* ${product.specs.join(", ")}`);
   const link = productLink(product);
   if (link) lines.push(`*Photo:* ${link}`);
   const source = sourceLine(ad);
   if (source) lines.push("", source);
-  lines.push("", "Please share the price and earliest availability. Thank you!");
+  lines.push(
+    "",
+    "Please share the price and earliest availability. Thank you!",
+  );
   return chatUrl(lines.join("\n"));
 }
 
 export function generalWhatsappUrl(brand: string, ad?: AdSource): string {
   const lines = [
     `Hello ${brand}! 👋`,
-    "I'm interested in your home services (electrical, plumbing, cleaning, EV charger or maintenance). Please share more details.",
+    "I'm interested in electrical engineering, smart automation, EV charging or property services. Please help me discuss the scope and availability.",
   ];
   const source = sourceLine(ad);
   if (source) lines.push("", source);
   return chatUrl(lines.join("\n"));
+}
+
+/** Keep campaign context during internal service navigation within this tab. */
+export function inquiryAdSource(): AdSource | undefined {
+  if (typeof window === "undefined") return undefined;
+  const current = readAdSource(window.location.search);
+  try {
+    if (current) {
+      window.sessionStorage.setItem(
+        "sh360-inquiry-source",
+        JSON.stringify(current),
+      );
+      return current;
+    }
+    const saved = JSON.parse(
+      window.sessionStorage.getItem("sh360-inquiry-source") || "null",
+    );
+    if (!saved || typeof saved !== "object") return undefined;
+    return readAdSource(
+      new URLSearchParams({
+        utm_source: typeof saved.source === "string" ? saved.source : "",
+        utm_campaign: typeof saved.campaign === "string" ? saved.campaign : "",
+      }).toString(),
+    );
+  } catch {
+    return current;
+  }
 }

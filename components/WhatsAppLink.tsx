@@ -3,7 +3,7 @@
 import { useMemo, type MouseEvent, type ReactNode } from "react";
 import type { Product } from "@/lib/products";
 import { useBrand } from "./BrandProvider";
-import { generalWhatsappUrl, productWhatsappUrl, readAdSource } from "@/lib/whatsapp";
+import { generalWhatsappUrl, productWhatsappUrl, inquiryAdSource } from "@/lib/whatsapp";
 
 type Props = {
   /** Omit for a general enquiry. */
@@ -24,7 +24,7 @@ export default function WhatsAppLink({ product, className, tabIndex, children }:
 
   // Add Meta ad / UTM info at click time (the page is statically rendered, so it is not known earlier).
   function handleClick(event: MouseEvent<HTMLAnchorElement>) {
-    const ad = readAdSource(window.location.search);
+    const ad = inquiryAdSource(window.location.search);
     event.currentTarget.href = product
       ? productWhatsappUrl(product, brand, ad)
       : generalWhatsappUrl(brand, ad);
