@@ -2021,3 +2021,9 @@
   font-size: 12px;
   margin-top: 15px;
 }
+.px-header nav a[aria-current="page"] {
+  color: #007d91;
+}
+.px-dropdown-list a[aria-current="page"] {
+  background: #e5f1f3;
+}

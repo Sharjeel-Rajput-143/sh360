@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { LogoMark, SearchIcon, HeartIcon } from "./Icons";
 import { useShop } from "./ShopProvider";
 import { services } from "@/lib/services";
@@ -18,6 +19,7 @@ export default function PublicHeader() {
     savedIds,
   } = useShop();
   const brand = useBrand();
+  const pathname = usePathname();
   useEffect(() => {
     const close = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -48,11 +50,26 @@ export default function PublicHeader() {
           aria-label="Main navigation"
           className={open ? "open" : ""}
         >
-          <Link href="/#top" onClick={close}>
+          <Link
+            href="/#top"
+            onClick={close}
+            aria-current={pathname === "/" ? "page" : undefined}
+          >
             Home
           </Link>
           {["Solutions", "Services"].map((label, i) => (
-            <div className="px-dropdown" key={label}>
+            <div
+              className="px-dropdown"
+              key={label}
+              onBlur={(event) => {
+                if (
+                  !event.currentTarget.contains(
+                    event.relatedTarget as Node | null,
+                  )
+                )
+                  setMenu("");
+              }}
+            >
               <button
                 onClick={() => setMenu(menu === label ? "" : label)}
                 aria-expanded={menu === label}
@@ -65,6 +82,9 @@ export default function PublicHeader() {
                   {services.slice(i === 0 ? 0 : 3, i === 0 ? 3 : 7).map((s) => (
                     <Link
                       href={`/services/${s.slug}`}
+                      aria-current={
+                        pathname === `/services/${s.slug}` ? "page" : undefined
+                      }
                       key={s.slug}
                       onClick={close}
                     >
@@ -81,7 +101,11 @@ export default function PublicHeader() {
               )}
             </div>
           ))}
-          <Link href="/projects" onClick={close}>
+          <Link
+            href="/projects"
+            onClick={close}
+            aria-current={pathname === "/projects" ? "page" : undefined}
+          >
             Projects
           </Link>
           <Link href="/#about" onClick={close}>
