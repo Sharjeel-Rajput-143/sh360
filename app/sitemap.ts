@@ -10,6 +10,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const catalog = await getCatalog();
   return [
     "",
+    "/about",
     "/projects",
     "/services",
     "/privacy",

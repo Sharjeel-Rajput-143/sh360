@@ -12,7 +12,7 @@ export default function Capabilities() {
         <span id="solutions" className="cp-anchor" />
         <SectionHeading
           id="capabilities-title"
-          label="02 / CAPABILITIES"
+          label="OUR CAPABILITIES"
           title="Choose the work your property needs."
         >
           Explore the scope below, then open a service guide for requirements,

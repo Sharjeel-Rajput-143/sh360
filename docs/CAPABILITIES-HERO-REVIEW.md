@@ -1,3 +1,5 @@
+> Historical architecture review. See HOMEPAGE-BALANCE-REVIEW.md for the restored company narrative. Hero proposals remain unapproved.
+
 # Homepage architecture and hero review
 
 The existing homepage hero remains unchanged and **pending approval**. No proposal has been applied. The rendered hero HTML was compared byte-for-byte before and after extraction into `TemporaryHomeHero`; SHA-256: `23bd2bd9103ccfe18dd26602bc35445b9d52dd8b245418f8910ceb67db037a7d`.

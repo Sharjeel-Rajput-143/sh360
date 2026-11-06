@@ -7,7 +7,7 @@ from pathlib import Path
 from html.parser import HTMLParser
 catalog=json.loads(Path('data/catalog.json').read_text())
 slugs=['electrical-engineering','iot-smart-automation','ev-charging','plumbing','carpentry','cleaning','property-maintenance']
-routes=[('/',200),('/services',200),('/?q=wiring',200),('/?saved=1',200),('/projects',200),('/privacy',200),('/terms',200),('/admin/login',200),('/api/admin/catalog',401),('/services/not-a-service',404)]
+routes=[('/',200),('/about',200),('/services',200),('/?q=wiring',200),('/?saved=1',200),('/projects',200),('/privacy',200),('/terms',200),('/admin/login',200),('/api/admin/catalog',401),('/services/not-a-service',404)]
 routes += [('/services/'+s,200) for s in slugs]
 routes += [('/p/'+p['id'],200) for p in catalog['products']]
 routes += [('/?tab='+c['id'],200) for c in catalog['categories']]
@@ -39,6 +39,11 @@ def check(item):
         assert b'electrical-installation-1280.webp' in body, 'Temporary hero photograph missing'
         parser=Sections();parser.feed(body.decode())
         assert parser.ids.count('capabilities') == 1, parser.ids
+        expected_sections=['top','about','capabilities','where-we-work','how-we-work','why-sh360','contact']
+        assert [s for s in parser.ids if s != 'projects'] == expected_sections, parser.ids
+        for heading in ['Technical Thinking.', 'Share Your Requirements', 'Review &amp; Assessment', 'Scope &amp; Quotation', 'Execution &amp; Handover']:
+            assert heading.encode() in body, heading
+        assert b'href="/about"' in body, 'About CTA missing'
         assert 'engineering' not in parser.ids and 'property-services' not in parser.ids, parser.ids
         if not any(p.get('verified') is True for p in json.loads(Path('data/evidence.json').read_text())['projects']):
             assert 'projects' not in parser.ids, 'Unverified work must stay hidden'

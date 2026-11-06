@@ -9,6 +9,7 @@ import "./sh360-revamp.css";
 import "./public-design.css";
 import "./industrial-design.css";
 import "./capability-concepts.css";
+import "./home-balance.css";
 
 const sans = localFont({
   src: "./fonts/dm-sans-latin.woff2",

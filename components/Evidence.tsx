@@ -35,7 +35,7 @@ export default function Evidence({ selected = false }: { selected?: boolean }) {
       <div className="px-wrap">
         {selected ? (
           <SectionHeading
-            label="03 / SELECTED WORK"
+            label="OUR WORK"
             title="Verified work, in context."
           />
         ) : (
