@@ -15,15 +15,25 @@ export default function PublicHeader() {
   const pathname = usePathname();
   useEffect(() => {
     const close = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setOpen(false);
+      if (e.key !== "Escape") return;
+      if (menu) {
         setMenu("");
+        document.getElementById(`toggle-${menu}`)?.focus();
+        return;
+      }
+      if (searchOpen) {
         setSearchOpen(false);
+        document.getElementById("toggle-search")?.focus();
+        return;
+      }
+      if (open) {
+        setOpen(false);
+        document.getElementById("toggle-navigation")?.focus();
       }
     };
     window.addEventListener("keydown", close);
     return () => window.removeEventListener("keydown", close);
-  }, [setSearchOpen]);
+  }, [setSearchOpen, menu, searchOpen, open]);
   const close = () => {
     setOpen(false);
     setMenu("");
@@ -64,6 +74,7 @@ export default function PublicHeader() {
               }}
             >
               <button
+                id={`toggle-${label}`}
                 onClick={() => setMenu(menu === label ? "" : label)}
                 aria-expanded={menu === label}
                 aria-controls={`menu-${label}`}
@@ -113,6 +124,7 @@ export default function PublicHeader() {
             Get a Quote <span>↗</span>
           </Link>
           <button
+            id="toggle-search"
             aria-label="Search services"
             aria-expanded={searchOpen}
             onClick={() => {
@@ -130,6 +142,7 @@ export default function PublicHeader() {
             <HeartIcon filled={showSaved} />
           </a>
           <button
+            id="toggle-navigation"
             className="px-mobile"
             aria-expanded={open}
             aria-controls="public-nav"

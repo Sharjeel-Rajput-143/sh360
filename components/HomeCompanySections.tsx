@@ -1,15 +1,18 @@
 import Link from "next/link";
 import SectionHeading from "./SectionHeading";
+import Image from "next/image";
+import ApproachProgress from "./ApproachProgress";
 
 export function AboutSH360() {
   return (
-    <section id="about" className="ix-section rb-about" aria-labelledby="about-title">
+    <section id="about" className="ix-section rb-about vs-about" aria-labelledby="about-title">
       <div className="px-wrap rb-introduction">
         <p className="ix-eyebrow">ABOUT SH360</p>
         <div className="rb-about-heading">
           <h2 id="about-title">Technical Thinking.<br />Practical Solutions.</h2>
           <Link href="/about" className="ix-text-link">Learn More About Us ↗</Link>
         </div>
+        <figure className="vs-about-photo"><Image src="/photography/electrical-installation-1280.webp" alt="Technician testing an installed electrical distribution board" width={1280} height={853} sizes="(max-width:700px) 100vw, 45vw" unoptimized /><figcaption>Reference installation photograph · <a href="https://commons.wikimedia.org/wiki/File:Man-electrical-technician-working-switchboard-with-fuses.jpg" target="_blank" rel="noopener noreferrer">Cláudio Marques Unip. LDA</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>, cropped.</figcaption></figure>
         <div className="rb-about-copy">
           <p>SH360 brings electrical engineering, connected technology and essential property services together through a coordinated approach to installation, upgrades and maintenance.</p>
           <p>Our focus is on understanding how a property operates, identifying the work required and delivering solutions suited to its technical and practical needs.</p>
@@ -20,32 +23,6 @@ export function AboutSH360() {
   );
 }
 
-const environments = [
-  ["Residential Properties", "Plan improvements around occupied rooms, existing fittings and daily routines. Describe the issue, the affected area and any access restrictions."],
-  ["Commercial Properties", "Identify the areas used by customers, the condition of existing systems and any trading or access constraints that affect the proposed work."],
-  ["Offices & Workplaces", "Consider workstations, shared areas and equipment in use. Share occupancy, access arrangements and where planned changes may affect staff."],
-  ["Managed Properties", "Bring reported defects and planned improvements into one brief. Identify the property contact, permissions and access arrangements for each location."],
-];
-export function WhereWeWork() {
-  return (
-    <section id="where-we-work" className="ix-section rb-environments" aria-labelledby="environments-title">
-      <div className="px-wrap">
-        <SectionHeading id="environments-title" label="WHERE WE WORK" title="Different spaces. Different requirements.">
-          The way a property is used shapes the work, the access needed and the details to review.
-        </SectionHeading>
-        <div className="rb-environment-list">
-          {environments.map(([title, text], i) => <article key={title}><span className="cp-number">0{i + 1}</span><h3>{title}</h3><p>{text}</p></article>)}
-        </div>
-      </div>
-    </section>
-  );
-}
-const stages = [
-  ["Share Your Requirements", "Tell us about the property and the issue or planned improvement. Include the location, relevant photos and any equipment details you have."],
-  ["Review & Assessment", "Discuss existing conditions, access and technical requirements. Establish whether a site assessment or further information is needed."],
-  ["Scope & Quotation", "Review the proposed tasks, materials, exclusions and quotation. Clarify responsibilities and arrangements before agreeing to proceed."],
-  ["Execution & Handover", "Arrange access for the agreed work. Review the completed scope and discuss relevant operating instructions, care information and any remaining items."],
-];
 export function OurApproach() {
   return (
     <section id="approach" className="ix-section rb-approach" aria-labelledby="approach-title">
@@ -62,9 +39,7 @@ export function OurApproach() {
             <p>Our service guides outline example tasks, information to prepare and common questions. Suitability, access, materials and availability are clarified for your property.</p>
             <Link href="#contact" className="ix-text-link">Discuss your requirements ↗</Link>
           </aside>
-          <ol className="bp-approach-stages">
-            {stages.map(([title, text], i) => <li key={title}><span aria-hidden="true">0{i + 1}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}
-          </ol>
+          <ApproachProgress />
         </div>
       </div>
     </section>

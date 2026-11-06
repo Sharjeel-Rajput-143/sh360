@@ -18,6 +18,7 @@ routes += [("/hero-concepts",200)]
 routes += [("/hero-concepts/"+concept,200) for concept in ["a","b","c"]]
 routes += [("/hero-concepts/not-a-concept",404),("/hero-concepts/toString",404)]
 routes += [("/hero-previews/"+concept+"-"+size+".jpg",200) for concept in ["a","b","c"] for size in ["desktop","mobile"]]
+routes += [("/story/"+name+".webp",200) for name in ["systems-cutaway","smart-office","carpentry","cleaning","maintenance","residential","commercial","workplace","managed"]]
 class Sections(HTMLParser):
     def __init__(self):
         super().__init__()
@@ -38,12 +39,15 @@ def check(item):
         assert b'Built Around the Systems That Matter.' in body, 'Approved hero missing'
         assert b'01 / ENGINEERING EVERYDAY SPACES' in body, 'Approved eyebrow missing'
         assert b'aria-label="Capability index"' in body, 'Capability index missing'
-        assert b'electrical-installation-1280.webp' in body, 'Licensed hero photograph missing'
+        assert b'systems-cutaway.webp' in body, 'Architectural cutaway missing'
+        assert b'HERO REVIEW CANDIDATE / NOT APPROVED' in body, 'Hero review status missing'
+        assert b'electrical-installation-1280.webp' in body, 'About installation photograph missing'
+        assert b'Engineering capabilities' in body and b'Property environments' in body, 'Visual selectors missing'
         parser=Sections();parser.feed(body.decode())
         assert parser.ids.count('capabilities') == 1, parser.ids
         expected_sections=['top','about','capabilities','where-we-work','approach','contact']
         assert [s for s in parser.ids if s != 'projects'] == expected_sections, parser.ids
-        for heading in ['Technical Thinking.', 'Share Your Requirements', 'Review &amp; Assessment', 'Scope &amp; Quotation', 'Execution &amp; Handover']:
+        for heading in ['Technical Thinking.', 'Requirements', 'Assessment', 'Scope and quotation', 'Execution and handover']:
             assert heading.encode() in body, heading
         assert b'href="/about"' in body, 'About CTA missing'
         assert 'engineering' not in parser.ids and 'property-services' not in parser.ids, parser.ids

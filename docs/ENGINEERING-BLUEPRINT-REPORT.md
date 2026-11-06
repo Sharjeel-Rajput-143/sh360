@@ -1,3 +1,5 @@
+> Historical implementation. Superseded by VISUAL-SYSTEMS-REVIEW.md following the owner’s architectural cutaway and interaction brief. The current hero is a review candidate, not approved.
+
 # Engineering Blueprint implementation
 
 Implemented the user-specified direction on `feature/sh360-engineering-blueprint`, a separate development branch from the prior homepage restoration. No alternative concepts were generated.

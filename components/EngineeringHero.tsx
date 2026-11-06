@@ -1,6 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 
-/** Approved editorial composition; reference photography is not presented as SH360 work. */
+/** Architectural cutaway review candidate. Approval is not implied. */
 export default function EngineeringHero({ brand }: { brand: string }) {
   return (
     <section id="top" className="bp-hero" aria-labelledby="bp-title">
@@ -18,15 +19,9 @@ export default function EngineeringHero({ brand }: { brand: string }) {
               <Link href="#contact" className="ix-text-link">Discuss a Project <span aria-hidden="true">↗</span></Link>
             </div>
           </div>
-          <figure className="bp-photo">
-            <picture>
-              <source type="image/webp" srcSet="/photography/electrical-installation-640.webp 640w, /photography/electrical-installation-1280.webp 1280w, /photography/electrical-installation-1920.webp 1920w" sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1360px) 40vw, 520px" />
-              <img src="/photography/electrical-installation-1280.webp" width={1280} height={853} alt="Electrical technician testing an installed distribution board with a meter" fetchPriority="high" />
-            </picture>
-            <figcaption>
-              <span>Electrical installation testing.<br />Reference photograph, not a SH360 project.</span>
-              <span><a href="https://commons.wikimedia.org/wiki/File:Man-electrical-technician-working-switchboard-with-fuses.jpg" target="_blank" rel="noopener noreferrer">Cláudio Marques Unip. LDA</a><br /><a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a> · cropped</span>
-            </figcaption>
+          <figure className="vs-hero-model">
+            <Image src="/story/systems-cutaway.webp" alt="Two-storey building cutaway revealing electrical distribution, contained cable routes, lighting and a pipe riser" width={1536} height={1024} sizes="(max-width:700px) 100vw, 65vw" priority unoptimized />
+            <figcaption><strong>HERO REVIEW CANDIDATE / NOT APPROVED</strong><span>Original AI-generated architectural study. Illustrative systems, not an installation design or SH360 project.</span></figcaption>
           </figure>
         </div>
         <nav className="bp-index" aria-label="Capability index">

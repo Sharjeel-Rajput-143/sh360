@@ -77,3 +77,18 @@ test("unified capabilities preserve all service destinations and engineering pro
     ["electrical-engineering", "iot-smart-automation", "ev-charging"],
   );
 });
+
+const { serviceMedia, propertyApplications } = require("../lib/story-media.ts");
+const { createHash } = require("node:crypto");
+const path = require("node:path");
+test("all service and property media exist and use distinct assets", () => {
+  for (const group of [services.map((s) => serviceMedia[s.slug]), propertyApplications]) {
+    const hashes = group.map((media) => {
+      assert.ok(media?.src && media.alt, "Media needs a source and useful alternative text");
+      const file = path.join(__dirname, "../public", media.src);
+      assert.ok(fs.existsSync(file), `Missing asset ${media.src}`);
+      return createHash("sha256").update(fs.readFileSync(file)).digest("hex");
+    });
+    assert.equal(new Set(hashes).size, group.length, "Distinct services/environments must not repeat an image");
+  }
+});

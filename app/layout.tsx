@@ -11,6 +11,7 @@ import "./industrial-design.css";
 import "./capability-concepts.css";
 import "./home-balance.css";
 import "./engineering-blueprint.css";
+import "./visual-story.css";
 
 const sans = localFont({
   src: "./fonts/dm-sans-latin.woff2",

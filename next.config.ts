@@ -9,6 +9,7 @@ const siteUrl =
     : "");
 
 const nextConfig: NextConfig = {
+  devIndicators: false,
   env: { NEXT_PUBLIC_SITE_URL: siteUrl },
   // Don't generate AGENTS.md / CLAUDE.md into the project.
   agentRules: false,
