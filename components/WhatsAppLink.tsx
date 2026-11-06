@@ -24,7 +24,7 @@ export default function WhatsAppLink({ product, className, tabIndex, children }:
 
   // Add Meta ad / UTM info at click time (the page is statically rendered, so it is not known earlier).
   function handleClick(event: MouseEvent<HTMLAnchorElement>) {
-    const ad = inquiryAdSource(window.location.search);
+    const ad = inquiryAdSource();
     event.currentTarget.href = product
       ? productWhatsappUrl(product, brand, ad)
       : generalWhatsappUrl(brand, ad);

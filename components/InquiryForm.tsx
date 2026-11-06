@@ -24,7 +24,7 @@ export default function InquiryForm({
       return;
     }
     const d = new FormData(e.currentTarget);
-    const ad = inquiryAdSource(window.location.search);
+    const ad = inquiryAdSource();
     const text = [
       `Hello ${brand}, I would like to discuss a service.`,
       ...["Full name", "Phone", "Email", "Location", "Property type"].map(
