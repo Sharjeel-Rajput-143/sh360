@@ -1,4 +1,5 @@
 import ServiceVisual from "@/components/ServiceVisual";
+import ServiceShowcase from "@/components/ServiceShowcase";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { services } from "@/lib/services";
@@ -55,6 +56,7 @@ export default async function ServicePage({
             </div>
           </div>
         </section>
+        <ServiceShowcase slug={s.slug} title={s.short} />
         <section className="px-section">
           <div className="px-wrap px-service-scope">
             <div>

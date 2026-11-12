@@ -1,0 +1,96 @@
+/* Showcase galleries for each service: reference photography grids, using the
+   existing palette, spacing and grid tokens from visual-story.css / public-design.css. */
+
+.sg-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+}
+.sg-item {
+  margin: 0;
+  overflow: hidden;
+  background: #ede7dd;
+  border-radius: 2px;
+}
+.sg-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+@media (hover: hover) {
+  .sg-item:hover img {
+    transform: scale(1.04);
+  }
+}
+.sg-note {
+  font-size: 10px;
+  line-height: 1.7;
+  color: #6b5b48;
+  margin: 18px 0 0;
+  max-width: 90ch;
+}
+
+/* Homepage: one compact gallery per category, inside the solutions section. */
+.sg-home {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid #c5bcad;
+}
+.sg-home-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 28px 20px;
+  margin-top: 20px;
+}
+.sg-home-card .sg-grid-compact {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  margin-top: 0;
+}
+.sg-home-card h3 {
+  font-size: 15px;
+  line-height: 1.3;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin: 12px 0 0;
+}
+.sg-home-card h3 a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  color: inherit;
+  text-decoration: none;
+}
+.sg-home-card h3 a span {
+  font-size: 13px;
+  color: #806347;
+  flex-shrink: 0;
+}
+@media (hover: hover) {
+  .sg-home-card h3 a:hover {
+    color: #806347;
+  }
+}
+
+@media (max-width: 900px) {
+  .sg-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .sg-home-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 26px 18px;
+  }
+}
+@media (max-width: 700px) {
+  .sg-grid {
+    gap: 10px;
+  }
+  .sg-home-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
